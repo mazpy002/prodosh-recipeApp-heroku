@@ -1,6 +1,3 @@
-.searchQuery {
-    width: 500px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: large;
+.excludeRecipeLabel{
+    display: inline;
 }

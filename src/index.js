@@ -1,16 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+import { ApiContextProvider } from "./contexts/apiString-context";
+
 ReactDOM.render(
-  <BrowserRouter>
-  <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+  <ApiContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ApiContextProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
