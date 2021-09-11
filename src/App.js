@@ -5,25 +5,27 @@ import RecipeView from "./views/RecipeView";
 import MoreInfo from "./views/MoreInfo";
 import SavedRecipes from "./views/SavedRecipes";
 
+import MainNavigation from "./components/MainNavigation";
+
 function App() {
   return (
+    <div>
+      <MainNavigation/>
     <Switch>
+      
       <Route path="/" exact={true}>
         <SavedRecipes></SavedRecipes>
       </Route>
 
-      <Route path="/search-page" exact={true}>
+      <Route path="/search-recipe" exact={true}>
         <SearchPage></SearchPage>
-      </Route>
-
-      <Route path="/more-info" exact={true}>
-        <MoreInfo></MoreInfo>
       </Route>
 
       <Route path="/recipe-view" exact={true}>
         <RecipeView></RecipeView>
       </Route>
     </Switch>
+    </div>
   );
 }
 
