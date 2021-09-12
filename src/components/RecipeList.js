@@ -26,7 +26,7 @@ function RecipeList(props)
         return <RecipeCard recipe={oneRecipe} key={oneRecipe.id} showMoreInfo={openInfoOverlay}/>
     })}
         <div>
-            {(recipeId !== "") ? <InfoModal onCancel={closeInfoOverlay} recipeNum={recipeId}/> : null}
+        {(recipeId !== "") ? <InfoModal onCancel={closeInfoOverlay} recipeNum={recipeId}/> : null}
             {(recipeId !== "") ? <Backdrop onCancel={closeInfoOverlay}/> : null}
         </div>
     </div>);

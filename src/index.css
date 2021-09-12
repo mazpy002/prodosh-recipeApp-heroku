@@ -33,21 +33,18 @@ code {
   padding: 1rem;
   text-align: left;
   width: 70%;
-  height: 800px;
+  height: 85%;
   z-index: 10;
-  position: fixed;
+  position: fixed;  
   top: 10vh;
   left: 15%;
   overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
-.infoModal-scrollbar {
-  appearance: inherit;
-  width: 7px;
+.infoData
+{
+  
+  min-height: 1000px;
+  
 }
-.infoModal-thumb {
-  border-radius: 4px;
-  background-color: rgba(0,0,0,.5);
-  box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
+

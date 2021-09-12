@@ -19,7 +19,7 @@ function RecipeCard(props) {
           <p className="card-text">
             {props.recipe.nutrition.nutrients.map((nutrient) => {
               return (
-                <span>
+                <span key={props.recipe.id + nutrient.title + "nutrients"}>
                   {nutrient.title}:{" "}
                   <b>
                     {nutrient.amount}
