@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 
 import RecipeCard from "./RecipeCard";
+import RecipeList from "./RecipeList";
 
 function CardColumns(props)
 {
@@ -29,11 +30,7 @@ function CardColumns(props)
 
 
     return(
-    <div className="row row-cols-1 row-cols-md-4 g-4">
-        {loadedRecipes.map((oneRecipe) =>{
-            return <RecipeCard recipe={oneRecipe} key={oneRecipe.id}/>
-        })}
-        </div>);
+    <RecipeList recipes={loadedRecipes}/>);
 }
 
 export default CardColumns;

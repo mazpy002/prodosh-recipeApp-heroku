@@ -6,6 +6,7 @@ import CuisineBoxes from "./CuisineBoxes";
 
 import classes from "./SearchForm.module.css";
 import ApiContext from "../contexts/apiString-context";
+import FormCard from "./FormCard";
 
 function SearchForm(props) {
   const queryInputRef = useRef();
@@ -104,6 +105,7 @@ function SearchForm(props) {
   }
 
   return (
+    <FormCard>
     <form>
       <div className="row mt-2">
         <div className="col-3">
@@ -177,6 +179,7 @@ function SearchForm(props) {
         </div>
       </div>
     </form>
+    </FormCard>
   );
 }
 
