@@ -62,7 +62,7 @@ function RecipeView(props) {
     
     return (
       <div>
-        <h1>Found recipes....</h1>
+        <h1 className="PageTitle">Found recipes....</h1>
         <CardColumns apiCall={queryString}/>
       </div>
     );

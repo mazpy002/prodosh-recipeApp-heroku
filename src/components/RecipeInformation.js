@@ -1,4 +1,5 @@
 import CollapseContainer from "./CollapseContainer";
+import RecipeSteps from "./RecipeSteps";
 
 function RecipeInformation(props) {
     function decodeText(text)
@@ -38,6 +39,14 @@ function RecipeInformation(props) {
             <div className="col">
                 <CollapseContainer collapseTitle="Ingredients" ingredientsList={props.recipeData.extendedIngredients} />
             </div>
+      </div>
+      <div className="row mt-3">
+          <h4>Steps:</h4>
+          <div className="col">
+                {props.recipeData.analyzedInstructions.map((instruction) => {
+                    return <RecipeSteps stepsList={instruction}/>
+                })}
+          </div>
       </div>
     </div>
   );

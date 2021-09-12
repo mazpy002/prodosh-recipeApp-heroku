@@ -19,11 +19,11 @@ function InfoModal(props)
             return response.json();
         })
         .then((data) => {
-            console.log(data);
+            //console.log(data);
 
-            setIsLoading(false);
+            
             setRecipeInfo(data);
-
+            setIsLoading(false);
 
 
 

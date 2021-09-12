@@ -24,7 +24,7 @@ function CollapseContainer(props) {
           <div className="accordion-body">
           <ul>
           {props.ingredientsList.map((ingredient) => {
-                return (<li>{ingredient.original}</li>);
+                return (<li key={ingredient.id}><h6>{ingredient.original}</h6></li>);
             })}
         </ul>
         </div>
