@@ -36,17 +36,23 @@ function RecipeInformation(props) {
           </div>
       </div>
       <div className="row mt-3">
+        {typeof(props.recipeData.extendedIngredients !== 'undefined') ? 
             <div className="col">
                 <CollapseContainer collapseTitle="Ingredients" ingredientsList={props.recipeData.extendedIngredients} />
             </div>
+            : null
+        }
       </div>
       <div className="row mt-3">
+        
           <h4>Steps:</h4>
+          {typeof(props.recipeData.analyzedInstructions) !== 'undefined' ? 
           <div className="col">
                 {props.recipeData.analyzedInstructions.map((instruction) => {
                     return <RecipeSteps stepsList={instruction}/>
                 })}
           </div>
+          : null}
       </div>
     </div>
   );

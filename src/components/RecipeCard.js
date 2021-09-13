@@ -30,7 +30,7 @@ function RecipeCard(props) {
               );
             })}
           </p>
-
+          <button type="button" className="btn btn-success">To Favourites</button>
           <button type="button" className="btn btn-info ms-2" onClick={getMoreInfo}>
             More info...
           </button>

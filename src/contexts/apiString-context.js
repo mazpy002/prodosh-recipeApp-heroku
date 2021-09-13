@@ -3,6 +3,8 @@ import { propTypes } from "react-bootstrap/esm/Image";
 
 const ApiContext = createContext({
     searchObject: {queryText: "", mealTypeText: "", diet: "", cuisinesList: [], excludedList: []},
+    favourites: [],
+    totalFavourites: 0,
     updateSearchObj: (obj) => {}
 });
 
@@ -12,6 +14,8 @@ export function ApiContextProvider(props)
 {
     const [newSearchObject, setSearchObject] = useState({});
 
+    const [userFavourites, setUserFavourites] = useState([]);
+
     function updateSearchObject(obj)
     {
         setSearchObject(obj);
@@ -19,6 +23,8 @@ export function ApiContextProvider(props)
 
     var context = {
         searchObject: {...newSearchObject},
+        favourites: userFavourites,
+        totalFavourites: userFavourites.length,
         updateSearchObj : updateSearchObject
     };
 

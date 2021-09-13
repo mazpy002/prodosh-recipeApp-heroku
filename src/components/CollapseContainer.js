@@ -1,8 +1,8 @@
 function CollapseContainer(props) {
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <div className="accordion" id="accordionFlushExample">
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
+        <h1 className="accordion-header" id="flush-headingOne">
           <button
             className="accordion-button collapsed"
             type="button"
@@ -11,9 +11,9 @@ function CollapseContainer(props) {
             aria-expanded="false"
             aria-controls="flush-collapseOne"
           >
-            {props.collapseTitle}
+            <h4>{props.collapseTitle}</h4>
           </button>
-        </h2>
+        </h1>
 
         <div
           id="flush-collapseOne"
