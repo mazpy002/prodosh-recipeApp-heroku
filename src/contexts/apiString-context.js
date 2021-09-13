@@ -5,7 +5,10 @@ const ApiContext = createContext({
     searchObject: {queryText: "", mealTypeText: "", diet: "", cuisinesList: [], excludedList: []},
     favourites: [],
     totalFavourites: 0,
-    updateSearchObj: (obj) => {}
+    updateSearchObj: (obj) => {},
+    addFav: (favouriteMeal) => {},
+    removeFav: (mealId) => {},
+    isFav: (mealId) => {}
 });
 
 
@@ -21,11 +24,36 @@ export function ApiContextProvider(props)
         setSearchObject(obj);
     }
 
+    function addFavourite(favouriteMeal)
+    {
+        setUserFavourites((prevUserFavourites) => {
+            return prevUserFavourites.concat(favouriteMeal);
+        });
+        
+    }
+
+    function removeFavourite(mealId)
+    {
+        setUserFavourites((prevUserFavourites) => {
+            // the filter function loops through the array and excludes any element that returns true in
+            // the call-back function
+            return prevUserFavourites.filter(meal => mealId !== meal.id);
+        });
+    }
+
+    function mealIsFavourite(mealId)
+    {
+        return userFavourites.some(meal => meal.id === mealId);
+    }
+
     var context = {
         searchObject: {...newSearchObject},
         favourites: userFavourites,
         totalFavourites: userFavourites.length,
-        updateSearchObj : updateSearchObject
+        updateSearchObj : updateSearchObject,
+        addFav: addFavourite,
+        removeFav: removeFavourite,
+        isFav: mealIsFavourite
     };
 
     return(<ApiContext.Provider value={context}>

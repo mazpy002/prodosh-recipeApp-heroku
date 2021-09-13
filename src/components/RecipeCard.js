@@ -1,5 +1,27 @@
+import {useContext} from "react";
+
+import ApiContext from "../contexts/apiString-context";
 
 function RecipeCard(props) {
+  const ApiCtx = useContext(ApiContext);
+
+  const isFavourite = ApiCtx.isFav(props.recipe.id);
+  
+  function changeStatus()
+  {
+    if(isFavourite)
+    {
+      ApiCtx.removeFav(props.recipe.id);
+    }
+    else{
+      ApiCtx.addFav({
+        id: props.recipe.id,
+        title: props.recipe.title,
+        nutrition: props.recipe.nutrition,
+        image: props.recipe.image
+      });
+    }
+  }
 
     function getMoreInfo()
     {
@@ -30,7 +52,7 @@ function RecipeCard(props) {
               );
             })}
           </p>
-          <button type="button" className="btn btn-success">To Favourites</button>
+          <button type="button" className={isFavourite ? "btn btn-danger" : "btn btn-success"} onClick={changeStatus}>{isFavourite ? "Un-Favourite" : "To Favourite"}</button>
           <button type="button" className="btn btn-info ms-2" onClick={getMoreInfo}>
             More info...
           </button>
