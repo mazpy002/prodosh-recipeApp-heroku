@@ -9,11 +9,15 @@ import ApiContext from "../contexts/apiString-context";
 import FormCard from "./FormCard";
 
 function SearchForm(props) {
+  // Using ref to get user text input
   const queryInputRef = useRef();
+
+  // History to change pages once the user searches
   const history = useHistory();
 
   const ApiCtx = useContext(ApiContext);
 
+  // The meals to choose from
   const meals = [
     "main course",
     "side dish",
@@ -26,6 +30,7 @@ function SearchForm(props) {
     "drink",
   ];
 
+  
   const diets = [
     "Gluten Free",
     "Ketogenic",
@@ -36,17 +41,21 @@ function SearchForm(props) {
     "Primal",
   ];
 
+  // CUisine set, there are 3 because thereare three rows
   const cuisineSet1 = ["Greek", "Mexican", "British", "Indian"];
   const cuisineSet2 = ["Italian", "Chinese", "Japanese", "Spanish"];
   const cuisineSet3 = ["Thai", "Korean", "Vietnamese", "French"];
 
+  // Igredients to be excluded
   const excludeSet1 = ["Dairy", "Egg", "Gluten", "Grain"];
   const excludeSet2 = ["Peanut", "Seafood", "Sesame", "Shellfish"];
   const excludeSet3 = ["Soy", "Sulfite", "Tree Nut", "Wheat"];
 
+  // Lists for the users cuisine types and ingredients they don't want in ther recipes
   var selectedCuisines = [];
   var excludedItems = [];
 
+  // The meals types get assigned when user picks them from the drop down
   var chosenMealType = "";
   var chosenDietType = "";
 
@@ -60,6 +69,8 @@ function SearchForm(props) {
       chosenDietType = dietType;
   }
 
+  // Loops through the excluded items and adds itemName if they are not in the excluded list
+  // removes item if they are already in the lsit
   function excludeItem(itemName) {
     if (!excludedItems.includes(itemName)) excludedItems.push(itemName);
     else {
@@ -71,11 +82,14 @@ function SearchForm(props) {
     //console.log(excludedItems);
   }
 
+  // triggers when user clisk search
   function searchRecipe(event) {
     event.preventDefault();
 
+    // Get the users search text
     const enteredQueryText = queryInputRef.current.value;
 
+    // Create a search object containing all the query parameters
     var searchObject = {
       queryText: enteredQueryText,
       mealTypeText: chosenMealType,
@@ -84,14 +98,18 @@ function SearchForm(props) {
       excludedList: excludedItems
     };
 
+    // Add the object to a context so another page can use it
     ApiCtx.updateSearchObj(searchObject);
 
+
+    // Change pages
     history.replace("/recipe-view");
 
-    //props.SetSearchObject("searchObject");
+    
     
   }
 
+  // Same as excluded items but with selectedCuisines
   function addCuisines(newCuisine) {
     if (!selectedCuisines.includes(newCuisine))
       selectedCuisines.push(newCuisine);
@@ -101,7 +119,7 @@ function SearchForm(props) {
       });
     }
 
-    //console.log(selectedCuisines);
+    
   }
 
   return (

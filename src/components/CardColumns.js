@@ -5,12 +5,16 @@ import RecipeList from "./RecipeList";
 
 function CardColumns(props)
 {
+    // states for showing loading text or not
     const [isLoading, setIsLoading] = useState(true);
 
+    // state to see if recipes have loaded from api
     const [loadedRecipes, setLoadedRecipes] = useState([]);
 
+    // stops an infinite loops from happening, useEffect makes sure api calls is made only once
     useEffect(() => {
         setIsLoading(true);
+        // fetch the data
         fetch(props.apiCall)
         .then((response) => {
             return response.json();
@@ -28,7 +32,7 @@ function CardColumns(props)
         return <div><h1>Loading...</h1></div>;
     }
 
-
+    // Return a recipe list containing all the recipes
     return(
     <RecipeList recipes={loadedRecipes}/>);
 }
